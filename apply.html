@@ -1,15 +1,765 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>AI Hack for Freedom Application Form</title>
-    <script>
-        // Instant redirect - executes immediately
-        window.location.replace('https://form.typeform.com/to/JpP6QSgD');
-    </script>
-    <meta http-equiv="refresh" content="0; url=https://form.typeform.com/to/JpP6QSgD">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="H4F Brandmark.png">
+    <link rel="apple-touch-icon" href="H4F Brandmark.png">
+    <title>Apply - AI Hack for Freedom II</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-orange: #E8832A;
+            --dark-orange: #D4721F;
+            --light-orange: #F5A54A;
+            --navy-blue: #1E3A5F;
+            --dark-navy: #152A45;
+            --lime-green: #7CB342;
+            --chartreuse: #C4D93C;
+            --teal: #26A69A;
+            --white: #ffffff;
+            --cream: #FFF8F0;
+            --light-text: #1E3A5F;
+            --shadow-soft: rgba(30, 58, 95, 0.15);
+            --shadow-medium: rgba(30, 58, 95, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--primary-orange);
+            color: var(--navy-blue);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated background gradient */
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--navy-blue);
+            padding: 20px 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--lime-green);
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar-content {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .navbar a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 6px;
+            position: relative;
+        }
+
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--chartreuse);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .navbar a:hover::after {
+            width: 80%;
+        }
+
+        .navbar a:hover {
+            color: var(--chartreuse);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .application-container {
+            margin-top: 70px;
+            min-height: calc(100vh - 70px);
+            display: flex;
+        }
+
+        .overview-section {
+            flex: 1;
+            background: linear-gradient(135deg, var(--navy-blue) 0%, var(--dark-navy) 50%, var(--navy-blue) 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 15s ease infinite;
+            color: var(--white);
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated particles background */
+        .overview-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--lime-green), var(--chartreuse), var(--primary-orange), var(--chartreuse), var(--lime-green));
+            background-size: 200% 100%;
+            animation: gradientShift 8s ease infinite;
+        }
+
+        .overview-section::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(124, 179, 66, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            top: 20%;
+            right: -100px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(196, 217, 60, 0.2) 0%, transparent 70%);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .floating-circle-1 {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            left: -50px;
+            animation-delay: 1s;
+        }
+
+        .floating-circle-2 {
+            width: 150px;
+            height: 150px;
+            top: 30%;
+            left: 30%;
+            animation-delay: 2s;
+        }
+
+        .overview-content {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .overview-content h1 {
+            font-family: 'Space Grotesk', 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--white);
+            letter-spacing: -0.02em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            line-height: 1.1;
+        }
+
+        .date-highlight {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--chartreuse);
+            border-radius: 12px;
+            padding: 20px 25px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .date-highlight:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 25px rgba(196, 217, 60, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .date-info {
+            flex: 1;
+        }
+
+        .date-info h2 {
+            font-family: 'Space Grotesk', 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--chartreuse);
+            margin-bottom: 5px;
+            letter-spacing: -0.01em;
+        }
+
+        .date-info p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+        }
+
+        .overview-content h3 {
+            font-family: 'Space Grotesk', 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            color: var(--lime-green);
+        }
+
+        .overview-content p {
+            font-size: 1.05rem;
+            margin-bottom: 20px;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+
+        .overview-content ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 20px;
+        }
+
+        .overview-content li {
+            font-size: 1rem;
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .overview-content li:hover {
+            transform: translateX(5px);
+            color: var(--chartreuse);
+        }
+
+        .overview-content li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--chartreuse);
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .overview-content li:hover::before {
+            transform: translateX(5px);
+        }
+
+        .form-section {
+            flex: 1;
+            background: var(--white);
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        .form-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(232, 131, 42, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-container h2 {
+            font-family: 'Space Grotesk', 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--navy-blue);
+            margin-bottom: 10px;
+            letter-spacing: -0.01em;
+            position: relative;
+            display: inline-block;
+        }
+
+        .form-container h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--lime-green), var(--chartreuse));
+            border-radius: 2px;
+        }
+
+        .form-container p {
+            font-size: 1.05rem;
+            color: var(--navy-blue);
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+
+        /* Google Form iframe styling */
+        .form-iframe {
+            width: 100%;
+            height: 1461px;
+            border: none;
+            border-radius: 12px;
+            background: var(--white);
+            box-shadow: 0 8px 30px rgba(30, 58, 95, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .form-iframe:hover {
+            box-shadow: 0 12px 40px rgba(30, 58, 95, 0.15);
+        }
+
+        /* Sponsor section */
+        .sponsor-section {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .sponsor-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        .sponsor-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .sponsor-item a {
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .sponsor-item a:hover {
+            transform: scale(1.05);
+        }
+
+        .sponsor-logo {
+            height: 35px;
+            width: auto;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .sponsor-logo:hover {
+            opacity: 1;
+        }
+
+        .sponsor-logo.inverted {
+            filter: brightness(0) invert(1);
+        }
+
+        .sponsor-text {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: lowercase;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--navy-blue);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-logo {
+            height: 40px;
+            width: auto;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-logo:hover {
+            opacity: 1;
+        }
+
+        .footer p {
+            color: var(--white);
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin: 0;
+            padding: 0 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .application-container {
+                flex-direction: column;
+            }
+
+            .overview-section,
+            .form-section {
+                padding: 50px 40px;
+            }
+
+            .overview-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .date-info h2 {
+                font-size: 1.7rem;
+            }
+
+            .form-container h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar-content {
+                gap: 15px;
+                justify-content: center;
+                padding: 0 20px;
+            }
+
+            .navbar a {
+                font-size: 0.85rem;
+                padding: 6px 12px;
+            }
+
+            .overview-section,
+            .form-section {
+                padding: 40px 30px;
+            }
+
+            .form-iframe {
+                height: 1400px;
+            }
+
+            .overview-content h1 {
+                font-size: 2rem;
+                margin-bottom: 15px;
+            }
+
+            .date-highlight {
+                padding: 15px 20px;
+            }
+
+            .date-info h2 {
+                font-size: 1.5rem;
+            }
+
+            .date-info p {
+                font-size: 1rem;
+            }
+
+            .overview-content h3 {
+                font-size: 1.3rem;
+                margin-top: 25px;
+            }
+
+            .overview-content p,
+            .overview-content li {
+                font-size: 0.95rem;
+            }
+
+            .sponsor-line {
+                gap: 15px;
+                font-size: 0.9rem;
+            }
+
+            .sponsor-logo {
+                height: 30px;
+            }
+
+            .form-container h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 15px 0;
+                min-height: 60px;
+            }
+
+            .navbar-content {
+                gap: 10px;
+            }
+
+            .navbar a {
+                font-size: 0.75rem;
+                padding: 5px 10px;
+            }
+
+            .application-container {
+                margin-top: 60px;
+            }
+
+            .overview-section,
+            .form-section {
+                padding: 30px 20px;
+            }
+
+            .form-iframe {
+                height: 1300px;
+            }
+
+            .overview-content h1 {
+                font-size: 1.6rem;
+            }
+
+            .date-highlight {
+                text-align: center;
+                padding: 20px;
+            }
+
+            .date-info h2 {
+                font-size: 1.4rem;
+            }
+
+            .overview-content h3 {
+                font-size: 1.2rem;
+            }
+
+            .overview-content p,
+            .overview-content li {
+                font-size: 0.9rem;
+            }
+
+            .sponsor-section {
+                margin-top: 30px;
+                padding-top: 20px;
+            }
+
+            .sponsor-line {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .sponsor-logo {
+                height: 28px;
+            }
+
+            .form-container h2 {
+                font-size: 1.5rem;
+            }
+
+            .form-container p {
+                font-size: 0.95rem;
+            }
+
+            .footer {
+                padding: 30px 0;
+            }
+
+            .footer-logo {
+                height: 35px;
+            }
+
+            .footer p {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
 </head>
-<body style="margin:0;padding:0;background:#0a0a0f;color:#e0e0e8;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:'Montserrat',sans-serif;">
-    <p>Redirecting to <a href="https://form.typeform.com/to/JpP6QSgD" style="color:#00f3ff;text-decoration:none;">Application Form</a>...</p>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="index.html">Home</a>
+            <a href="index.html#info">About</a>
+            <a href="index.html#how-it-works">How It Works</a>
+            <a href="austin-2026.html">History</a>
+        </div>
+    </nav>
+
+    <div class="application-container">
+        <div class="overview-section">
+            <div class="floating-circle floating-circle-1"></div>
+            <div class="floating-circle floating-circle-2"></div>
+
+            <div class="overview-content">
+                <h1>AI HACK FOR FREEDOM II</h1>
+
+                <div class="date-highlight">
+                    <div class="date-info">
+                        <h2>May 9-10, 2026</h2>
+                        <p>AI Freedom Lab at Bitcoin Park • Nashville, TN</p>
+                    </div>
+                </div>
+
+                <h3>What is AI Hack for Freedom?</h3>
+                <p>An intensive weekend hackathon where developers and innovators build solutions that advance freedom, privacy, and decentralized technology.</p>
+
+                <p><strong>Get paired with real activists solving real problems.</strong> Every team is led by an activist "captain" with a genuine need for technology solutions.</p>
+
+                <h3>Why Participate?</h3>
+                <ul>
+                    <li>Build technology that creates real-world impact</li>
+                    <li>Work alongside activists on meaningful problems</li>
+                    <li>Connect with the freedom tech community</li>
+                    <li>Compete for prizes and recognition</li>
+                </ul>
+
+                <div class="sponsor-section">
+                    <div class="sponsor-line">
+                        <span class="sponsor-text">sponsored by:</span>
+                        <div class="sponsor-item">
+                            <a href="https://hrf.org" target="_blank" rel="noopener noreferrer">
+                                <img src="HRF-BW-LOGO.png" alt="Human Rights Foundation" class="sponsor-logo inverted">
+                            </a>
+                        </div>
+                        <span class="sponsor-text">hosted by:</span>
+                        <div class="sponsor-item">
+                            <a href="https://bitcoinpark.com/austin" target="_blank" rel="noopener noreferrer">
+                                <img src="bitcoinpark_primarylogo_white.png" alt="Bitcoin Park" class="sponsor-logo">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <div class="form-container">
+                <h2>Apply Now</h2>
+                <p>Ready to build the future of freedom technology? Fill out the form below to apply.</p>
+
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfSPBuY0KhB-WE5OPyev27pCICgUBdwcswkk5nIYfuoMQ0V7Q/viewform?embedded=true" class="form-iframe" width="640" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add parallax effect on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const circles = document.querySelectorAll('.floating-circle');
+            circles.forEach((circle, index) => {
+                const speed = 0.5 + (index * 0.2);
+                circle.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+    </script>
+
+    <footer class="footer">
+        <div class="container">
+            <div style="margin-bottom: 20px;">
+                <a href="https://aifreedomlab.org" target="_blank" rel="noopener noreferrer" style="display: inline-block;">
+                    <img src="ai-freedom-lab-2.png" alt="AI Freedom Lab" class="footer-logo">
+                </a>
+            </div>
+            <p>Rules for the hackathon are subject to change. Please check back for the most up-to-date version.</p>
+        </div>
+    </footer>
 </body>
 </html>
