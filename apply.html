@@ -160,6 +160,40 @@
             background: rgba(255, 255, 255, 0.1);
         }
 
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: var(--chartreuse);
+            margin: 4px 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
         .application-container {
             margin-top: 70px;
             min-height: calc(100vh - 70px);
@@ -526,24 +560,57 @@
         }
 
         @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
             .navbar-content {
-                gap: 15px;
-                justify-content: center;
-                padding: 0 20px;
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background: var(--navy-blue);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 80px;
+                gap: 20px;
+                transition: left 0.3s ease;
+                z-index: 999;
+                overflow-y: auto;
+            }
+
+            .navbar-content.active {
+                left: 0;
             }
 
             .navbar a {
-                font-size: 0.85rem;
-                padding: 6px 12px;
-                min-height: 44px; /* Touch-friendly size */
+                font-size: 1.1rem;
+                padding: 16px 30px;
+                width: 85%;
+                text-align: center;
+                border: 2px solid rgba(255, 255, 255, 0.2);
+                border-radius: 8px;
+                min-height: 44px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
             }
 
+            .navbar a:hover,
+            .navbar a:active {
+                background: rgba(255, 255, 255, 0.1);
+                border-color: var(--chartreuse);
+            }
+
+            .application-container {
+                margin-top: 100px; /* Increased space from navbar */
+            }
+
             .overview-section,
             .form-section {
-                padding: 40px 20px;
+                padding: 50px 20px;
             }
 
             .form-iframe {
@@ -597,24 +664,35 @@
         }
 
         @media (max-width: 480px) {
+            .hamburger {
+                left: 16px;
+            }
+
+            .hamburger span {
+                width: 24px;
+                height: 2.5px;
+                margin: 3px 0;
+            }
+
             .navbar {
                 padding: 15px 0;
                 min-height: 60px;
             }
 
             .navbar-content {
-                gap: 8px;
-                padding: 0 15px;
+                padding-top: 70px;
+                gap: 15px;
             }
 
             .navbar a {
-                font-size: 0.75rem;
-                padding: 8px 12px;
-                min-height: 44px; /* iOS minimum touch target */
+                font-size: 1rem;
+                padding: 14px 24px;
+                width: 90%;
+                min-height: 44px;
             }
 
             .application-container {
-                margin-top: 60px;
+                margin-top: 90px; /* Even more space on small screens */
             }
 
             .overview-section,
@@ -699,7 +777,12 @@
 </head>
 <body>
     <nav class="navbar">
-        <div class="navbar-content">
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="navbar-content" id="navbarContent">
             <a href="index.html">Home</a>
             <a href="index.html#info">About</a>
             <a href="index.html#how-it-works">How It Works</a>
@@ -765,6 +848,37 @@
     </div>
 
     <script>
+        // Hamburger menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const navbarContent = document.getElementById('navbarContent');
+            const navbar = document.querySelector('.navbar');
+
+            if (hamburger && navbarContent) {
+                hamburger.addEventListener('click', function() {
+                    hamburger.classList.toggle('active');
+                    navbarContent.classList.toggle('active');
+                });
+
+                // Close menu when clicking on a link
+                const navLinks = navbarContent.querySelectorAll('a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        hamburger.classList.remove('active');
+                        navbarContent.classList.remove('active');
+                    });
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!navbar.contains(e.target) && navbarContent.classList.contains('active')) {
+                        hamburger.classList.remove('active');
+                        navbarContent.classList.remove('active');
+                    }
+                });
+            }
+        });
+
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
