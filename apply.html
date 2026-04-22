@@ -115,15 +115,21 @@
             min-height: 70px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         .navbar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
             display: flex;
+            justify-content: center;
             align-items: center;
-            gap: 30px;
-            flex-wrap: wrap;
+            gap: 40px;
+            flex-wrap: nowrap;
+        }
+
+        .nav-apply-btn-wrapper {
+            display: contents;
         }
 
         .navbar a {
@@ -136,28 +142,29 @@
             transition: all 0.3s ease;
             padding: 8px 16px;
             border-radius: 6px;
-            position: relative;
-        }
-
-        .navbar a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--chartreuse);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-
-        .navbar a:hover::after {
-            width: 80%;
         }
 
         .navbar a:hover {
             color: var(--chartreuse);
             background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-apply-btn {
+            background: var(--chartreuse) !important;
+            color: var(--navy-blue) !important;
+            border-radius: 6px;
+            font-weight: 700 !important;
+            font-size: 0.9rem !important;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+            padding: 10px 20px !important;
+            transition: all 0.3s ease;
+        }
+
+        .nav-apply-btn:hover {
+            background: var(--lime-green) !important;
+            color: var(--white) !important;
+            transform: translateY(-2px);
         }
 
         /* Hamburger Menu */
@@ -168,7 +175,7 @@
             padding: 8px;
             z-index: 1001;
             position: absolute;
-            left: 20px;
+            right: 20px;
             top: 50%;
             transform: translateY(-50%);
         }
@@ -629,9 +636,11 @@
             }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1000px) {
             .hamburger {
                 display: flex;
+                left: 20px;
+                right: auto;
             }
 
             .navbar-content {
@@ -655,24 +664,32 @@
                 left: 0;
             }
 
-            .navbar a {
+            .navbar-content a:not(.nav-apply-btn) {
                 font-size: 1.1rem;
                 padding: 16px 30px;
                 width: 85%;
                 text-align: center;
                 border: 2px solid rgba(255, 255, 255, 0.2);
                 border-radius: 8px;
-                min-height: 44px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
             }
 
-            .navbar a:hover,
-            .navbar a:active {
+            .navbar-content a:not(.nav-apply-btn):hover,
+            .navbar-content a:not(.nav-apply-btn):active {
                 background: rgba(255, 255, 255, 0.1);
                 border-color: var(--chartreuse);
             }
+
+            .nav-apply-btn {
+                position: fixed !important;
+                right: 20px;
+                top: 35px;
+                left: auto;
+                transform: translateY(-50%);
+                margin-top: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
 
             .application-container {
                 margin-top: 100px; /* Increased space from navbar */
@@ -754,11 +771,18 @@
                 gap: 15px;
             }
 
-            .navbar a {
+            .navbar-content a:not(.nav-apply-btn) {
                 font-size: 1rem;
                 padding: 14px 24px;
                 width: 90%;
-                min-height: 44px;
+            }
+
+            .nav-apply-btn {
+                right: 16px !important;
+                top: 30px !important;
+                transform: translateY(-50%) !important;
+                font-size: 0.8rem !important;
+                padding: 8px 14px !important;
             }
 
             .application-container {
@@ -857,9 +881,10 @@
             <span></span>
         </div>
         <div class="navbar-content" id="navbarContent">
-            <a href="index.html">Home</a>
-            <a href="index.html#info">About</a>
-            <a href="index.html#how-it-works">How It Works</a>
+            <a href="index.html#top">Home</a>
+            <a href="index.html#info">Build the Future</a>
+            <a href="index.html#press">In the Press</a>
+            <a href="apply.html" class="nav-apply-btn">Applications Closed</a>
         </div>
     </nav>
 
