@@ -220,6 +220,9 @@
             color: var(--navy-blue) !important;
             border-radius: 6px;
             font-weight: 700 !important;
+            font-size: 0.9rem !important;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
             padding: 10px 20px !important;
             transition: all 0.3s ease;
         }
@@ -804,6 +807,24 @@
             opacity: 0.9;
             margin: 0;
             padding: 0 20px;
+        }
+
+        .footer-footnote {
+            margin-top: 12px !important;
+            font-size: 0.85rem;
+            opacity: 0.78;
+        }
+
+        .footer-footnote a {
+            color: var(--white);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+            transition: all 0.3s ease;
+        }
+
+        .footer-footnote a:hover {
+            color: var(--chartreuse);
+            border-bottom-color: rgba(201, 229, 49, 0.45);
         }
 
         /* Activate hamburger menu before items get cramped */
@@ -1461,11 +1482,8 @@
         <div class="navbar-content" id="navbarContent">
             <a href="#top">Home</a>
             <a href="#info">Build the Future</a>
-            <a href="#expect">What to Expect</a>
-            <a href="#how-it-works">How It Works</a>
-            <a href="austin-2026.html">History</a>
             <a href="#press">In the Press</a>
-            <a href="apply.html" class="nav-apply-btn">Apply Now</a>
+            <a href="apply.html" class="nav-apply-btn">Applications Closed</a>
         </div>
     </nav>
 
@@ -1476,7 +1494,7 @@
             <p style="font-size: clamp(1rem, 3vw, 2rem); margin-bottom: clamp(8px, 1.5vh, 12px); font-weight: 600;">Nashville, Tennessee</p>
             <p style="font-size: clamp(1rem, 3vw, 2rem); margin-bottom: clamp(12px, 2vh, 18px); font-weight: 600;">May 9-10, 2026</p>
             <div style="margin-bottom: clamp(10px, 2vh, 20px);">
-                <a href="apply.html" class="hero-cta">APPLY NOW</a>
+                <a href="apply.html" class="hero-cta">APPLICATIONS CLOSED</a>
             </div>
         </div>
         <div class="sponsor-section">
@@ -1535,7 +1553,7 @@
                     </div>
                     <div class="how-it-works-card">
                         <h3>Prize Distribution</h3>
-                        <p>Prize pool is TBD.</p>
+                        <p>$50k prize pool paid in BTC.</p>
                     </div>
                 </div>
             </div>
@@ -1557,10 +1575,10 @@
         <div class="container">
             <div class="cta-box">
                 <div class="cta-content">
-                    <h2>READY TO HACK?</h2>
-                    <p>Don't miss out on this incredible opportunity<br>to build the future of freedom technology.</p>
+                    <h2>APPLICATIONS ARE CLOSED</h2>
+                    <p>Thanks for the interest in AI Hack for Freedom II.<br>Applications are now closed for the 2026 event.</p>
                     <div style="margin-bottom: clamp(5px, 1vh, 10px);">
-                        <a href="apply.html" class="cta-button">APPLY NOW</a>
+                        <a href="apply.html" class="cta-button">VIEW STATUS</a>
                     </div>
                 </div>
             </div>
@@ -1601,8 +1619,8 @@
                 </a>
             </div>
             <p>Rules for the hackathon are subject to change. Please check back for the most up-to-date version.</p>
+            <p class="footer-footnote">Looking for previous events? Visit the <a href="austin-2026.html">Hack for Freedom history page</a>.</p>
         </div>
     </footer>
 </body>
 </html>
-

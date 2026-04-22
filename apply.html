@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="H4F Brandmark.png">
     <link rel="apple-touch-icon" href="H4F Brandmark.png">
-    <title>Apply - AI Hack for Freedom II</title>
+    <title>Applications Closed - AI Hack for Freedom II</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -428,21 +428,91 @@
             opacity: 0.8;
         }
 
-        /* Google Form iframe styling */
-        .form-iframe {
+        .status-card {
             width: 100%;
             max-width: 100%;
-            height: 1461px;
-            border: none;
-            border-radius: 12px;
-            background: var(--white);
-            box-shadow: 0 8px 30px rgba(30, 58, 95, 0.1);
-            transition: all 0.3s ease;
-            overflow-x: hidden;
+            border-radius: 18px;
+            border: 1px solid rgba(163, 230, 53, 0.35);
+            padding: 32px;
+            background: linear-gradient(180deg, rgba(232, 131, 42, 0.08) 0%, rgba(163, 230, 53, 0.12) 100%);
+            box-shadow: 0 18px 48px rgba(30, 58, 95, 0.12);
+            overflow: hidden;
         }
 
-        .form-iframe:hover {
-            box-shadow: 0 12px 40px rgba(30, 58, 95, 0.15);
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 18px;
+            border-radius: 999px;
+            background: rgba(232, 131, 42, 0.16);
+            color: var(--navy-blue);
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+        }
+
+        .status-badge::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--orange-accent);
+            box-shadow: 0 0 0 6px rgba(232, 131, 42, 0.18);
+        }
+
+        .status-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--navy-blue);
+            opacity: 0.88;
+            margin-bottom: 18px;
+        }
+
+        .status-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .status-card strong {
+            color: var(--navy-blue);
+        }
+
+        .status-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+            font-weight: 700;
+            color: var(--navy-blue);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .status-link:hover {
+            color: var(--orange-accent);
+            transform: translateX(5px);
+        }
+
+        .history-footnote {
+            margin-top: 22px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: rgba(30, 58, 95, 0.68);
+        }
+
+        .history-footnote a {
+            color: var(--navy-blue);
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(30, 58, 95, 0.22);
+            transition: all 0.3s ease;
+        }
+
+        .history-footnote a:hover {
+            color: var(--orange-accent);
+            border-bottom-color: rgba(232, 131, 42, 0.45);
         }
 
         /* Prevent horizontal scroll */
@@ -613,9 +683,9 @@
                 padding: 50px 20px;
             }
 
-            .form-iframe {
-                height: 1400px;
-                border-radius: 8px;
+            .status-card {
+                padding: 26px;
+                border-radius: 16px;
             }
 
             .form-container {
@@ -700,9 +770,9 @@
                 padding: 25px 15px;
             }
 
-            .form-iframe {
-                height: 1300px;
-                border-radius: 6px;
+            .status-card {
+                padding: 22px 18px;
+                border-radius: 14px;
             }
 
             .form-container {
@@ -761,6 +831,10 @@
                 font-size: 0.95rem;
             }
 
+            .history-footnote {
+                font-size: 0.85rem;
+            }
+
             .footer {
                 padding: 30px 0;
             }
@@ -786,7 +860,6 @@
             <a href="index.html">Home</a>
             <a href="index.html#info">About</a>
             <a href="index.html#how-it-works">How It Works</a>
-            <a href="austin-2026.html">History</a>
         </div>
     </nav>
 
@@ -820,16 +893,16 @@
 
                 <div class="sponsor-section">
                     <div class="sponsor-line">
-                        <span class="sponsor-text">sponsored by:</span>
-                        <div class="sponsor-item">
-                            <a href="https://hrf.org" target="_blank" rel="noopener noreferrer">
-                                <img src="HRF-BW-LOGO.png" alt="Human Rights Foundation" class="sponsor-logo inverted">
-                            </a>
-                        </div>
                         <span class="sponsor-text">hosted by:</span>
                         <div class="sponsor-item">
                             <a href="https://aifreedomlab.org" target="_blank" rel="noopener noreferrer">
                                 <img src="ai-freedom-lab-2.png" alt="AI Freedom Lab" class="sponsor-logo">
+                            </a>
+                        </div>
+                        <span class="sponsor-text">sponsored by:</span>
+                        <div class="sponsor-item">
+                            <a href="https://hrf.org" target="_blank" rel="noopener noreferrer">
+                                <img src="HRF-BW-LOGO.png" alt="Human Rights Foundation" class="sponsor-logo inverted">
                             </a>
                         </div>
                     </div>
@@ -839,10 +912,17 @@
 
         <div class="form-section">
             <div class="form-container">
-                <h2>Apply Now</h2>
-                <p>Ready to build the future of freedom technology? Fill out the form below to apply.</p>
+                <h2>Applications Closed</h2>
+                <p>Applications for AI Hack for Freedom II are now closed.</p>
 
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfSPBuY0KhB-WE5OPyev27pCICgUBdwcswkk5nIYfuoMQ0V7Q/viewform?embedded=true&usp=sf_link" class="form-iframe" width="640" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                <div class="status-card">
+                    <div class="status-badge">Status Update</div>
+                    <p><strong>Thank you to everyone who applied.</strong> We appreciate the interest in building freedom technology with us in Nashville on May 9-10, 2026.</p>
+                    <p>The application form has been removed now that submissions are closed. Please check back here for future Hack for Freedom events and updates.</p>
+                    <a href="index.html" class="status-link">Return to the main event page</a>
+                </div>
+
+                <p class="history-footnote">Looking for previous events? Browse the <a href="austin-2026.html">Hack for Freedom history page</a>.</p>
             </div>
         </div>
     </div>
