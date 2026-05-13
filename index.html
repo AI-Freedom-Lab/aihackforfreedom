@@ -1234,20 +1234,84 @@
             position: relative;
         }
 
-        .press-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin-top: 40px;
+        .press-carousel {
+            position: relative;
             max-width: 1400px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 40px auto 0;
+        }
+
+        .press-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 5;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(255, 255, 255, 0.4);
+            background: rgba(30, 58, 95, 0.55);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: all 0.25s ease;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+        }
+
+        .press-arrow:hover {
+            opacity: 1;
+            background: var(--lime-green);
+            border-color: var(--lime-green);
+            color: var(--navy-blue);
+        }
+
+        .press-arrow:disabled {
+            opacity: 0.2;
+            cursor: default;
+        }
+
+        .press-arrow-left {
+            left: -6px;
+        }
+
+        .press-arrow-right {
+            right: -6px;
+        }
+
+        .press-grid {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-padding: 20px;
+            scroll-behavior: smooth;
+            padding: 10px 20px 20px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: var(--lime-green) rgba(255, 255, 255, 0.2);
+        }
+
+        .press-grid::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .press-grid::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+        }
+
+        .press-grid::-webkit-scrollbar-thumb {
+            background: var(--lime-green);
+            border-radius: 4px;
         }
 
         .press-card {
             background: rgba(255, 255, 255, 0.97);
             border-radius: 12px;
-            padding: 20px 22px;
+            padding: 24px 26px;
             border: 2px solid var(--navy-blue);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow:
@@ -1258,6 +1322,8 @@
             cursor: pointer;
             text-decoration: none;
             display: block;
+            flex: 0 0 320px;
+            scroll-snap-align: start;
         }
 
         .press-card::before {
@@ -1327,20 +1393,26 @@
 
         @media (max-width: 1024px) {
             .press-grid {
-                grid-template-columns: repeat(2, 1fr);
                 gap: 16px;
+            }
+
+            .press-card {
+                flex: 0 0 290px;
             }
         }
 
         @media (max-width: 768px) {
-            .press-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 14px;
+            .press-carousel {
                 margin-top: 24px;
             }
 
+            .press-grid {
+                gap: 14px;
+            }
+
             .press-card {
-                padding: 16px 18px;
+                flex: 0 0 260px;
+                padding: 18px 20px;
             }
 
             .press-title {
@@ -1353,13 +1425,21 @@
                 padding: 35px 0;
             }
 
-            .press-grid {
-                grid-template-columns: 1fr;
-                gap: 12px;
+            .press-arrow {
+                display: none;
+            }
+
+            .press-carousel {
                 margin-top: 20px;
             }
 
+            .press-grid {
+                gap: 12px;
+                padding: 10px 16px 16px;
+            }
+
             .press-card {
+                flex: 0 0 240px;
                 padding: 16px 16px;
                 border-radius: 10px;
             }
@@ -1470,6 +1550,36 @@
                 el.addEventListener('mouseenter', () => cursor.classList.add('active'));
                 el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
             });
+
+            // Press carousel arrows
+            const pressGrid = document.querySelector('.press-grid');
+            const pressLeft = document.querySelector('.press-arrow-left');
+            const pressRight = document.querySelector('.press-arrow-right');
+
+            if (pressGrid && pressLeft && pressRight) {
+                const getStep = () => {
+                    const card = pressGrid.querySelector('.press-card');
+                    if (!card) return 320;
+                    const gap = parseInt(getComputedStyle(pressGrid).columnGap || getComputedStyle(pressGrid).gap, 10) || 20;
+                    return card.offsetWidth + gap;
+                };
+
+                const updateArrows = () => {
+                    const maxScroll = pressGrid.scrollWidth - pressGrid.clientWidth;
+                    pressLeft.disabled = pressGrid.scrollLeft <= 2;
+                    pressRight.disabled = pressGrid.scrollLeft >= maxScroll - 2;
+                };
+
+                pressLeft.addEventListener('click', () => {
+                    pressGrid.scrollBy({ left: -getStep(), behavior: 'smooth' });
+                });
+                pressRight.addEventListener('click', () => {
+                    pressGrid.scrollBy({ left: getStep(), behavior: 'smooth' });
+                });
+                pressGrid.addEventListener('scroll', updateArrows, { passive: true });
+                window.addEventListener('resize', updateArrows);
+                updateArrows();
+            }
         });
     </script>
 </head>
@@ -1590,7 +1700,22 @@
         <div class="container">
             <div class="info-content">
                 <h2 style="text-align: center; margin-bottom: 10px;">IN THE PRESS</h2>
+                <div class="press-carousel">
+                    <button class="press-arrow press-arrow-left" aria-label="Scroll press stories left" type="button">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    </button>
+                    <button class="press-arrow press-arrow-right" aria-label="Scroll press stories right" type="button">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
                 <div class="press-grid">
+                    <a href="https://hrf.org/latest/announcing-the-winners-of-ai-hack-for-freedom-ii/" target="_blank" rel="noopener noreferrer" class="press-card">
+                        <span class="press-source">Human Rights Foundation</span>
+                        <h3 class="press-title">Announcing the Winners of AI Hack for Freedom II</h3>
+                    </a>
+                    <a href="https://hrf.org/latest/hrf-sponsors-second-edition-of-ai-hack-for-freedom-in-nashville-tn-may-9-10/" target="_blank" rel="noopener noreferrer" class="press-card">
+                        <span class="press-source">Human Rights Foundation</span>
+                        <h3 class="press-title">HRF Sponsors Second Edition of AI Hack for Freedom in Nashville, TN</h3>
+                    </a>
                     <a href="https://hrf.org/latest/announcing-the-ai-hack-for-freedom-hackathon-winners/" target="_blank" rel="noopener noreferrer" class="press-card">
                         <span class="press-source">Human Rights Foundation</span>
                         <h3 class="press-title">Announcing the AI Hack for Freedom Hackathon Winners</h3>
@@ -1607,6 +1732,7 @@
                         <span class="press-source">Human Rights Foundation</span>
                         <h3 class="press-title">HRF Sponsors AI Hack for Freedom in Austin, TX</h3>
                     </a>
+                </div>
                 </div>
             </div>
         </div>
