@@ -147,6 +147,17 @@
             justify-content: flex-start;
         }
 
+        /* Applied while the NED logo is silenced: centers the remaining
+           AFL + HRF line instead of pinning HRF to the exact page center.
+           Remove this class from the sponsor-line div when NED returns. */
+        .sponsor-line-centered {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px 30px;
+        }
+
         .sponsor-group {
             display: flex;
             align-items: center;
@@ -1657,7 +1668,10 @@
             </div>
         </div>
         <div class="sponsor-section">
-            <div class="sponsor-line">
+            <!-- NED logo silenced 2026-07-30. To turn it back on with the same configuration:
+                 1) remove the "sponsor-line-centered" class from the div below
+                 2) uncomment the sponsor-side-right block at the end of this sponsor-line -->
+            <div class="sponsor-line sponsor-line-centered">
                 <div class="sponsor-side sponsor-side-left">
                     <div class="sponsor-group">
                         <span class="sponsor-text">Presented By:</span>
@@ -1674,6 +1688,7 @@
                         <img src="HRF-BW-LOGO.png" alt="Human Rights Foundation" class="sponsor-logo inverted">
                     </a>
                 </div>
+                <!-- NED (silenced — see note above)
                 <div class="sponsor-side sponsor-side-right">
                     <div class="sponsor-item">
                         <a href="https://www.ned.org/" target="_blank" rel="noopener noreferrer">
@@ -1681,6 +1696,7 @@
                         </a>
                     </div>
                 </div>
+                -->
             </div>
         </div>
     </div>
