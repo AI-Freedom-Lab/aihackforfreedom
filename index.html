@@ -124,31 +124,19 @@
         }
 
         .sponsor-line {
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
             align-items: center;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
+            column-gap: 15px;
             font-size: 1.1rem;
             color: var(--navy-blue);
             font-weight: 500;
         }
 
-        .sponsor-line-presented {
-            margin-bottom: 20px;
-        }
-
-        .sponsor-line-sponsored {
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
-            align-items: center;
-            column-gap: 15px;
-        }
-
         .sponsor-side {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 30px;
         }
 
         .sponsor-side-left {
@@ -191,6 +179,10 @@
             filter: brightness(0) invert(1);
         }
 
+        .sponsor-logo-afl {
+            height: clamp(24px, 2.4vw, 30px);
+        }
+
         .sponsor-text {
             font-size: clamp(0.85rem, 1.5vw, 0.95rem);
             color: var(--navy-blue);
@@ -198,6 +190,17 @@
             text-transform: uppercase;
             letter-spacing: 0.04em;
             font-weight: 600;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 1280px) {
+            .sponsor-line {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 20px 30px;
+            }
         }
 
         .navbar {
@@ -963,16 +966,14 @@
                 gap: 18px;
             }
 
-            .sponsor-line-presented {
-                margin-bottom: 18px;
-            }
-
-            .sponsor-line-sponsored {
-                display: flex;
-            }
-
             .sponsor-side {
+                flex-direction: column;
                 justify-content: center;
+                gap: 18px;
+            }
+
+            .sponsor-logo.sponsor-logo-afl {
+                height: 24px;
             }
 
             .sponsor-logo {
@@ -1141,6 +1142,10 @@
 
             .sponsor-logo {
                 height: 32px;
+            }
+
+            .sponsor-logo.sponsor-logo-afl {
+                height: 20px;
             }
 
             .sponsor-text {
@@ -1652,18 +1657,16 @@
             </div>
         </div>
         <div class="sponsor-section">
-            <div class="sponsor-line sponsor-line-presented">
-                <div class="sponsor-group">
-                    <span class="sponsor-text">Presented By:</span>
-                    <div class="sponsor-item">
-                        <a href="https://aifreedomlab.org" target="_blank" rel="noopener noreferrer">
-                            <img src="ai-freedom-lab-2.png" alt="AI Freedom Lab" class="sponsor-logo">
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="sponsor-line sponsor-line-sponsored">
+            <div class="sponsor-line">
                 <div class="sponsor-side sponsor-side-left">
+                    <div class="sponsor-group">
+                        <span class="sponsor-text">Presented By:</span>
+                        <div class="sponsor-item">
+                            <a href="https://aifreedomlab.org" target="_blank" rel="noopener noreferrer">
+                                <img src="ai-freedom-lab-2.png" alt="AI Freedom Lab" class="sponsor-logo sponsor-logo-afl">
+                            </a>
+                        </div>
+                    </div>
                     <span class="sponsor-text">Sponsored By:</span>
                 </div>
                 <div class="sponsor-item">
