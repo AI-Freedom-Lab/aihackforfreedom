@@ -301,6 +301,16 @@
             transform: translateY(-2px);
         }
 
+        .nav-apply-btn.disabled,
+        .nav-apply-btn.disabled:hover {
+            background: rgba(196, 217, 60, 0.3) !important;
+            color: rgba(255, 255, 255, 0.75) !important;
+            cursor: not-allowed;
+            user-select: none;
+            transform: none;
+            box-shadow: none;
+        }
+
         /* Hamburger Menu Styles */
         .hamburger {
             display: none;
@@ -484,7 +494,7 @@
             background: rgba(30, 58, 95, 0.5);
             color: rgba(255, 255, 255, 0.7);
             cursor: not-allowed;
-            pointer-events: none;
+            user-select: none;
             border-color: rgba(30, 58, 95, 0.5);
             box-shadow: none;
         }
@@ -493,7 +503,7 @@
             background: rgba(255, 255, 255, 0.2);
             color: rgba(255, 255, 255, 0.6);
             cursor: not-allowed;
-            pointer-events: none;
+            user-select: none;
             border-color: rgba(255, 255, 255, 0.3);
             box-shadow: none;
         }
@@ -503,10 +513,20 @@
             display: none;
         }
 
-        .hero-cta.disabled:hover,
+        .hero-cta.disabled:hover {
+            transform: none;
+            box-shadow: none;
+            background: rgba(30, 58, 95, 0.5);
+            border-color: rgba(30, 58, 95, 0.5);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
         .cta-button.disabled:hover {
             transform: none;
             box-shadow: none;
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: rgba(255, 255, 255, 0.6);
         }
 
         .hero-brandmark {
@@ -1714,7 +1734,7 @@
             <a href="#top">Home</a>
             <a href="#info">Build the Future</a>
             <a href="#press">In the Press</a>
-            <a href="https://forms.gle/c4uVb4PywLsGqr3X9" target="_blank" rel="noopener noreferrer" class="nav-apply-btn">Apply Now</a>
+            <span class="nav-apply-btn disabled" aria-disabled="true" title="Applications are closed">Applications Closed</span>
         </div>
     </nav>
 
@@ -1725,7 +1745,7 @@
             <p style="font-size: clamp(1rem, 3vw, 2rem); margin-bottom: clamp(8px, 1.5vh, 12px); font-weight: 600;">Washington, DC</p>
             <p style="font-size: clamp(1rem, 3vw, 2rem); margin-bottom: clamp(12px, 2vh, 18px); font-weight: 600;">September 24-25, 2026</p>
             <div style="margin-bottom: clamp(10px, 2vh, 20px);">
-                <a href="https://forms.gle/c4uVb4PywLsGqr3X9" target="_blank" rel="noopener noreferrer" class="hero-cta">APPLY NOW</a>
+                <span class="hero-cta disabled" aria-disabled="true" title="Applications are closed">APPLICATIONS CLOSED</span>
             </div>
         </div>
         <div class="sponsor-section">
@@ -1826,10 +1846,10 @@
         <div class="container">
             <div class="cta-box">
                 <div class="cta-content">
-                    <h2>APPLICATIONS ARE OPEN</h2>
-                    <p>AI Hack for Freedom III is coming to Washington, DC on September 24-25, 2026.<br>Apply now to join developers and activists building freedom tech.</p>
+                    <h2>APPLICATIONS ARE CLOSED</h2>
+                    <p>AI Hack for Freedom III is coming to Washington, DC on September 24-25, 2026.<br>Applications are now closed. Thank you to everyone who applied.</p>
                     <div style="margin-bottom: clamp(5px, 1vh, 10px);">
-                        <a href="https://forms.gle/c4uVb4PywLsGqr3X9" target="_blank" rel="noopener noreferrer" class="cta-button">APPLY NOW</a>
+                        <span class="cta-button disabled" aria-disabled="true" title="Applications are closed">APPLICATIONS CLOSED</span>
                     </div>
                 </div>
             </div>
