@@ -435,6 +435,34 @@
             opacity: 0.8;
         }
 
+        /* Google Form iframe styling */
+        .form-iframe {
+            display: block;
+            width: 100%;
+            height: 1461px;
+            border: none;
+            border-radius: 12px;
+            background: var(--white);
+            box-shadow: 0 8px 30px rgba(30, 58, 95, 0.1);
+        }
+
+        .form-fallback {
+            margin-top: 16px;
+            font-size: 0.9rem;
+        }
+
+        .form-fallback a {
+            color: var(--navy-blue);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .form-iframe {
+                height: 1400px;
+                border-radius: 8px;
+            }
+        }
+
         .status-card {
             width: 100%;
             max-width: 100%;
@@ -891,7 +919,7 @@
             <a href="index.html#top">Home</a>
             <a href="index.html#info">Build the Future</a>
             <a href="index.html#press">In the Press</a>
-            <a href="https://forms.gle/CUdy59oTcP6ARz66A" target="_blank" rel="noopener noreferrer" class="nav-apply-btn">Apply Here</a>
+            <a href="#apply-form" class="nav-apply-btn">Apply Here</a>
         </div>
     </nav>
 
@@ -951,17 +979,13 @@
             </div>
         </div>
 
-        <div class="form-section">
+        <div class="form-section" id="apply-form">
             <div class="form-container">
                 <h2>Apply Now</h2>
-                <p>Applications for AI Hack for Freedom IV are now open.</p>
+                <p>Ready to build the future of freedom technology? Join us in San Francisco, CA on December 3-4, 2026. Fill out the form below to apply.</p>
 
-                <div class="status-card">
-                    <div class="status-badge">Applications Open</div>
-                    <p><strong>Join us in San Francisco, CA on December 3-4, 2026</strong> to build freedom technology with activists, developers, and innovators from around the world.</p>
-                    <p>Spots are limited. Apply through the form below — we review on a rolling basis.</p>
-                    <a href="https://forms.gle/CUdy59oTcP6ARz66A" target="_blank" rel="noopener noreferrer" class="status-link">Open the application form →</a>
-                </div>
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdv2p8vjBaUHNBbjUbp-NOd7sRodpT10vh1e366pbh94eNyvQ/viewform?embedded=true" class="form-iframe" title="AI Hack for Freedom IV application form" width="640" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                <p class="form-fallback">Trouble loading the form? <a href="https://forms.gle/CUdy59oTcP6ARz66A" target="_blank" rel="noopener noreferrer">Open it in a new tab</a>.</p>
 
                 <p class="history-footnote">Looking for previous events? Browse the <a href="austin-2026.html">Hack for Freedom history page</a>.</p>
             </div>
