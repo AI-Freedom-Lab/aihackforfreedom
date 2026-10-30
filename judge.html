@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="H4F Brandmark.png">
+    <link rel="apple-touch-icon" href="H4F Brandmark.png">
+    <title>Judge - AI Hack for Freedom IV</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-orange: #E8832A;
+            --dark-orange: #D4721F;
+            --light-orange: #F5A54A;
+            --navy-blue: #1E3A5F;
+            --dark-navy: #152A45;
+            --lime-green: #7CB342;
+            --chartreuse: #C4D93C;
+            --teal: #26A69A;
+            --white: #ffffff;
+            --cream: #FFF8F0;
+            --light-text: #1E3A5F;
+            --shadow-soft: rgba(30, 58, 95, 0.15);
+            --shadow-medium: rgba(30, 58, 95, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--primary-orange);
+            color: var(--navy-blue);
+            line-height: 1.6;
+            overflow-x: hidden;
+            max-width: 100vw;
+            -webkit-text-size-adjust: 100%; /* Prevent text scaling on iOS */
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* Remove tap highlight */
+            touch-action: manipulation; /* Improve touch responsiveness */
+        }
+
+        /* Animated background gradient */
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--navy-blue);
+            padding: 20px 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--lime-green);
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: nowrap;
+        }
+
+        .nav-apply-btn-wrapper {
+            display: contents;
+        }
+
+        .navbar a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 6px;
+        }
+
+        .navbar a:hover {
+            color: var(--chartreuse);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-apply-btn {
+            background: var(--chartreuse) !important;
+            color: var(--navy-blue) !important;
+            border-radius: 6px;
+            font-weight: 700 !important;
+            font-size: 0.9rem !important;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+            padding: 10px 20px !important;
+            transition: all 0.3s ease;
+        }
+
+        .nav-apply-btn:hover {
+            background: var(--lime-green) !important;
+            color: var(--white) !important;
+            transform: translateY(-2px);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: var(--chartreuse);
+            margin: 4px 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .application-container {
+            margin-top: 70px;
+            min-height: calc(100vh - 70px);
+            display: flex;
+        }
+
+        .overview-section {
+            flex: 1;
+            background: linear-gradient(135deg, var(--navy-blue) 0%, var(--dark-navy) 50%, var(--navy-blue) 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 15s ease infinite;
+            color: var(--white);
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated particles background */
+        .overview-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--lime-green), var(--chartreuse), var(--primary-orange), var(--chartreuse), var(--lime-green));
+            background-size: 200% 100%;
+            animation: gradientShift 8s ease infinite;
+        }
+
+        .overview-section::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(124, 179, 66, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            top: 20%;
+            right: -100px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(196, 217, 60, 0.2) 0%, transparent 70%);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .floating-circle-1 {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            left: -50px;
+            animation-delay: 1s;
+        }
+
+        .floating-circle-2 {
+            width: 150px;
+            height: 150px;
+            top: 30%;
+            left: 30%;
+            animation-delay: 2s;
+        }
+
+        .overview-content {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .overview-content h1 {
+            font-family: 'Space Grotesk', 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--white);
+            letter-spacing: -0.02em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            line-height: 1.1;
+        }
+
+        .date-highlight {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--chartreuse);
+            border-radius: 12px;
+            padding: 20px 25px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .date-highlight:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 25px rgba(196, 217, 60, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .date-info {
+            flex: 1;
+        }
+
+        .date-info h2 {
+            font-family: 'Space Grotesk', 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--chartreuse);
+            margin-bottom: 5px;
+            letter-spacing: -0.01em;
+        }
+
+        .date-info p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+        }
+
+        .overview-content h3 {
+            font-family: 'Space Grotesk', 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            color: var(--lime-green);
+        }
+
+        .overview-content p {
+            font-size: 1.05rem;
+            margin-bottom: 20px;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+
+        .overview-content ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 20px;
+        }
+
+        .overview-content li {
+            font-size: 1rem;
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .overview-content li:hover {
+            transform: translateX(5px);
+            color: var(--chartreuse);
+        }
+
+        .overview-content li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--chartreuse);
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .overview-content li:hover::before {
+            transform: translateX(5px);
+        }
+
+        .form-section {
+            flex: 1;
+            background: var(--white);
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        .form-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(232, 131, 42, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-container h2 {
+            font-family: 'Space Grotesk', 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--navy-blue);
+            margin-bottom: 10px;
+            letter-spacing: -0.01em;
+            position: relative;
+            display: inline-block;
+        }
+
+        .form-container h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--lime-green), var(--chartreuse));
+            border-radius: 2px;
+        }
+
+        .form-container p {
+            font-size: 1.05rem;
+            color: var(--navy-blue);
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+
+        /* Google Form iframe styling */
+        .form-iframe {
+            display: block;
+            width: 100%;
+            height: 1580px;
+            border: none;
+            border-radius: 12px;
+            background: var(--white);
+            box-shadow: 0 8px 30px rgba(30, 58, 95, 0.1);
+        }
+
+        .form-fallback {
+            margin-top: 16px;
+            font-size: 0.9rem;
+        }
+
+        .form-fallback a {
+            color: var(--navy-blue);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .form-iframe {
+                height: 1700px;
+                border-radius: 8px;
+            }
+        }
+
+        .status-card {
+            width: 100%;
+            max-width: 100%;
+            border-radius: 18px;
+            border: 1px solid rgba(163, 230, 53, 0.35);
+            padding: 32px;
+            background: linear-gradient(180deg, rgba(232, 131, 42, 0.08) 0%, rgba(163, 230, 53, 0.12) 100%);
+            box-shadow: 0 18px 48px rgba(30, 58, 95, 0.12);
+            overflow: hidden;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 18px;
+            border-radius: 999px;
+            background: rgba(232, 131, 42, 0.16);
+            color: var(--navy-blue);
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+        }
+
+        .status-badge::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--orange-accent);
+            box-shadow: 0 0 0 6px rgba(232, 131, 42, 0.18);
+        }
+
+        .status-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--navy-blue);
+            opacity: 0.88;
+            margin-bottom: 18px;
+        }
+
+        .status-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .status-card strong {
+            color: var(--navy-blue);
+        }
+
+        .status-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+            font-weight: 700;
+            color: var(--navy-blue);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .status-link:hover {
+            color: var(--orange-accent);
+            transform: translateX(5px);
+        }
+
+        .history-footnote {
+            margin-top: 22px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: rgba(30, 58, 95, 0.68);
+        }
+
+        .history-footnote a {
+            color: var(--navy-blue);
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(30, 58, 95, 0.22);
+            transition: all 0.3s ease;
+        }
+
+        .history-footnote a:hover {
+            color: var(--orange-accent);
+            border-bottom-color: rgba(232, 131, 42, 0.45);
+        }
+
+        /* Prevent horizontal scroll */
+        .form-section {
+            overflow-x: hidden;
+        }
+
+        .form-container {
+            overflow-x: hidden;
+        }
+
+        /* Sponsor section */
+        .sponsor-section {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .sponsor-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        .sponsor-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .sponsor-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .sponsor-item a {
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .sponsor-item a:hover {
+            transform: scale(1.05);
+        }
+
+        .sponsor-logo {
+            height: 35px;
+            width: auto;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .sponsor-logo:hover {
+            opacity: 1;
+        }
+
+        .sponsor-logo.inverted {
+            filter: brightness(0) invert(1);
+        }
+
+        .sponsor-text {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--navy-blue);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-logo {
+            height: 40px;
+            width: auto;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-logo:hover {
+            opacity: 1;
+        }
+
+        .footer p {
+            color: var(--white);
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin: 0;
+            padding: 0 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .application-container {
+                flex-direction: column;
+            }
+
+            .overview-section,
+            .form-section {
+                padding: 50px 40px;
+            }
+
+            .overview-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .date-info h2 {
+                font-size: 1.7rem;
+            }
+
+            .form-container h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 1000px) {
+            .hamburger {
+                display: flex;
+                left: 20px;
+                right: auto;
+            }
+
+            .navbar-content {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background: var(--navy-blue);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 80px;
+                gap: 20px;
+                transition: left 0.3s ease;
+                z-index: 999;
+                overflow-y: auto;
+            }
+
+            .navbar-content.active {
+                left: 0;
+            }
+
+            .navbar-content a:not(.nav-apply-btn) {
+                font-size: 1.1rem;
+                padding: 16px 30px;
+                width: 85%;
+                text-align: center;
+                border: 2px solid rgba(255, 255, 255, 0.2);
+                border-radius: 8px;
+            }
+
+            .navbar-content a:not(.nav-apply-btn):hover,
+            .navbar-content a:not(.nav-apply-btn):active {
+                background: rgba(255, 255, 255, 0.1);
+                border-color: var(--chartreuse);
+            }
+
+            .nav-apply-btn {
+                position: fixed !important;
+                right: 20px;
+                top: 35px;
+                left: auto;
+                transform: translateY(-50%);
+                margin-top: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .application-container {
+                margin-top: 100px; /* Increased space from navbar */
+            }
+
+            .overview-section,
+            .form-section {
+                padding: 50px 20px;
+            }
+
+            .status-card {
+                padding: 26px;
+                border-radius: 16px;
+            }
+
+            .form-container {
+                padding: 0;
+            }
+
+            .overview-content h1 {
+                font-size: 2rem;
+                margin-bottom: 15px;
+            }
+
+            .date-highlight {
+                padding: 15px 20px;
+            }
+
+            .date-info h2 {
+                font-size: 1.5rem;
+            }
+
+            .date-info p {
+                font-size: 1rem;
+            }
+
+            .overview-content h3 {
+                font-size: 1.3rem;
+                margin-top: 25px;
+            }
+
+            .overview-content p,
+            .overview-content li {
+                font-size: 0.95rem;
+            }
+
+            .sponsor-line {
+                gap: 15px;
+                font-size: 0.9rem;
+            }
+
+            .sponsor-logo {
+                height: 30px;
+            }
+
+            .form-container h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hamburger {
+                left: 16px;
+            }
+
+            .hamburger span {
+                width: 24px;
+                height: 2.5px;
+                margin: 3px 0;
+            }
+
+            .navbar {
+                padding: 15px 0;
+                min-height: 60px;
+            }
+
+            .navbar-content {
+                padding-top: 70px;
+                gap: 15px;
+            }
+
+            .navbar-content a:not(.nav-apply-btn) {
+                font-size: 1rem;
+                padding: 14px 24px;
+                width: 90%;
+            }
+
+            .nav-apply-btn {
+                right: 16px !important;
+                top: 30px !important;
+                transform: translateY(-50%) !important;
+                font-size: 0.8rem !important;
+                padding: 8px 14px !important;
+            }
+
+            .application-container {
+                margin-top: 90px; /* Even more space on small screens */
+            }
+
+            .overview-section,
+            .form-section {
+                padding: 25px 15px;
+            }
+
+            .status-card {
+                padding: 22px 18px;
+                border-radius: 14px;
+            }
+
+            .form-container {
+                padding: 0;
+            }
+
+            .form-container h2 {
+                line-height: 1.3;
+            }
+
+            .form-container p {
+                line-height: 1.6;
+            }
+
+            .overview-content h1 {
+                font-size: 1.6rem;
+            }
+
+            .date-highlight {
+                text-align: center;
+                padding: 20px;
+            }
+
+            .date-info h2 {
+                font-size: 1.4rem;
+            }
+
+            .overview-content h3 {
+                font-size: 1.2rem;
+            }
+
+            .overview-content p,
+            .overview-content li {
+                font-size: 0.9rem;
+            }
+
+            .sponsor-section {
+                margin-top: 30px;
+                padding-top: 20px;
+            }
+
+            .sponsor-line {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .sponsor-logo {
+                height: 28px;
+            }
+
+            .form-container h2 {
+                font-size: 1.5rem;
+            }
+
+            .form-container p {
+                font-size: 0.95rem;
+            }
+
+            .history-footnote {
+                font-size: 0.85rem;
+            }
+
+            .footer {
+                padding: 30px 0;
+            }
+
+            .footer-logo {
+                height: 35px;
+            }
+
+            .footer p {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="navbar-content" id="navbarContent">
+            <a href="index.html#top">Home</a>
+            <a href="index.html#info">Build the Future</a>
+            <a href="index.html#press">In the Press</a>
+            <a href="#judge-form" class="nav-apply-btn">Judge Here</a>
+        </div>
+    </nav>
+
+    <div class="application-container">
+        <div class="overview-section">
+            <div class="floating-circle floating-circle-1"></div>
+            <div class="floating-circle floating-circle-2"></div>
+
+            <div class="overview-content">
+                <h1>AI HACK FOR FREEDOM IV</h1>
+
+                <div class="date-highlight">
+                    <div class="date-info">
+                        <h2>December 2-4, 2026</h2>
+                        <p>AI Freedom Lab • San Francisco, CA</p>
+                    </div>
+                </div>
+
+                <h3>What is AI Hack for Freedom?</h3>
+                <p>An intensive hackathon where developers and innovators build solutions that advance freedom, privacy, and decentralized technology.</p>
+
+                <p><strong>Every team is led by an activist "captain"</strong> with a genuine need for technology solutions. Judges help decide which projects deliver the most real-world impact.</p>
+
+                <h3>What Judges Do</h3>
+                <ul>
+                    <li>Join us in person in San Francisco on the afternoon of December 4th (exact times TBA)</li>
+                    <li>Watch final team demos and evaluate their projects</li>
+                    <li>Help select the winning teams</li>
+                    <li>Judging is the only part of the hackathon judges are required to attend</li>
+                </ul>
+
+                <div class="sponsor-section">
+                    <div class="sponsor-line">
+                        <div class="sponsor-group">
+                            <span class="sponsor-text">Presented By:</span>
+                            <div class="sponsor-item">
+                                <a href="https://aifreedomlab.org" target="_blank" rel="noopener noreferrer">
+                                    <img src="ai-freedom-lab-2.png" alt="AI Freedom Lab" class="sponsor-logo">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="sponsor-group">
+                            <span class="sponsor-text">Supported By:</span>
+                            <div class="sponsor-item">
+                                <a href="https://hrf.org" target="_blank" rel="noopener noreferrer">
+                                    <img src="HRF-BW-LOGO.png" alt="Human Rights Foundation" class="sponsor-logo inverted">
+                                </a>
+                            </div>
+                            <div class="sponsor-item">
+                                <a href="https://www.presidiobitcoin.org/" target="_blank" rel="noopener noreferrer">
+                                    <img src="presidio-bitcoin-logo-white.png" alt="Presidio Bitcoin" class="sponsor-logo">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section" id="judge-form">
+            <div class="form-container">
+                <h2>Become a Judge</h2>
+                <p>Interested in judging AI Hack for Freedom IV? Fill out the form below to let us know. We will follow up with a confirmation and additional details closer to the event.</p>
+
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfaOzATHi2gMUZ8F4zE-afqqDFO0y-SfOtSpsIYI01fjcucnA/viewform?embedded=true" class="form-iframe" title="AI Hack for Freedom IV judge intake form" width="640" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                <p class="form-fallback">Trouble loading the form? <a href="https://forms.gle/HhAGfrPVFUceRriz7" target="_blank" rel="noopener noreferrer">Open it in a new tab</a>.</p>
+
+                <p class="history-footnote">Looking for previous events? Browse the <a href="austin-2026.html">Hack for Freedom history page</a>.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Hamburger menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const navbarContent = document.getElementById('navbarContent');
+            const navbar = document.querySelector('.navbar');
+
+            if (hamburger && navbarContent) {
+                hamburger.addEventListener('click', function() {
+                    hamburger.classList.toggle('active');
+                    navbarContent.classList.toggle('active');
+                });
+
+                // Close menu when clicking on a link
+                const navLinks = navbarContent.querySelectorAll('a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        hamburger.classList.remove('active');
+                        navbarContent.classList.remove('active');
+                    });
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!navbar.contains(e.target) && navbarContent.classList.contains('active')) {
+                        hamburger.classList.remove('active');
+                        navbarContent.classList.remove('active');
+                    }
+                });
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add parallax effect on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const circles = document.querySelectorAll('.floating-circle');
+            circles.forEach((circle, index) => {
+                const speed = 0.5 + (index * 0.2);
+                circle.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+    </script>
+
+    <footer class="footer">
+        <div class="container">
+            <div style="margin-bottom: 20px;">
+                <a href="https://aifreedomlab.org" target="_blank" rel="noopener noreferrer" style="display: inline-block;">
+                    <img src="ai-freedom-lab-2.png" alt="AI Freedom Lab" class="footer-logo">
+                </a>
+            </div>
+            <p>Rules for the hackathon are subject to change. Please check back for the most up-to-date version.</p>
+        </div>
+    </footer>
+</body>
+</html>
