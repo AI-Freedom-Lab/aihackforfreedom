@@ -376,6 +376,67 @@
             transform: translateX(5px);
         }
 
+        .judge-schedule {
+            border: 2px solid rgba(196, 217, 60, 0.5);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.08);
+            overflow: hidden;
+        }
+
+        .schedule-row {
+            display: flex;
+            gap: 20px;
+            padding: 16px 20px;
+        }
+
+        .schedule-row + .schedule-row {
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .schedule-time {
+            flex: 0 0 120px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .schedule-day {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .schedule-hour {
+            font-family: 'Space Grotesk', 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--chartreuse);
+        }
+
+        .schedule-event {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .schedule-event span {
+            font-size: 0.9rem;
+            opacity: 0.85;
+        }
+
+        @media (max-width: 480px) {
+            .schedule-row {
+                flex-direction: column;
+                gap: 6px;
+            }
+
+            .schedule-time {
+                flex-basis: auto;
+            }
+        }
+
         .form-section {
             flex: 1;
             background: var(--white);
@@ -946,11 +1007,29 @@
 
                 <h3>What Judges Do</h3>
                 <ul>
-                    <li>Join us in person in San Francisco on the afternoon of December 4th (exact times TBA)</li>
+                    <li>Join us in person at Presidio Bitcoin in San Francisco on the afternoon of Friday, December 4th</li>
                     <li>Watch final team demos and evaluate their projects</li>
                     <li>Help select the winning teams</li>
                     <li>Judging is the only part of the hackathon judges are required to attend</li>
                 </ul>
+
+                <h3>Judge Schedule</h3>
+                <div class="judge-schedule">
+                    <div class="schedule-row">
+                        <div class="schedule-time">
+                            <span class="schedule-day">Fri 12/4</span>
+                            <span class="schedule-hour">12:45 PM</span>
+                        </div>
+                        <div class="schedule-event">Judges arrive at Presidio Bitcoin</div>
+                    </div>
+                    <div class="schedule-row">
+                        <div class="schedule-time">
+                            <span class="schedule-day">Fri 12/4</span>
+                            <span class="schedule-hour">1:00 &ndash; 1:30 PM</span>
+                        </div>
+                        <div class="schedule-event"><strong>Judging Orientation</strong><span>Prep meeting for judges, led by Alex Lewin</span></div>
+                    </div>
+                </div>
 
                 <div class="sponsor-section">
                     <div class="sponsor-line">
