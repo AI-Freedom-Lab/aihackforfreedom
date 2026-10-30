@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="H4F Brandmark.png">
+    <link rel="apple-touch-icon" href="H4F Brandmark.png">
+    <title>Past Winners - AI Hack for Freedom</title>
+    <meta name="description" content="Winning teams and projects from AI Hack for Freedom I, II, and III.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-orange: #E8832A;
+            --dark-orange: #D4721F;
+            --light-orange: #F5A54A;
+            --navy-blue: #1E3A5F;
+            --dark-navy: #152A45;
+            --lime-green: #7CB342;
+            --chartreuse: #C4D93C;
+            --teal: #26A69A;
+            --white: #ffffff;
+            --cream: #FFF8F0;
+            --shadow-soft: rgba(30, 58, 95, 0.15);
+            --shadow-medium: rgba(30, 58, 95, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--cream);
+            color: var(--navy-blue);
+            line-height: 1.6;
+            overflow-x: hidden;
+            max-width: 100vw;
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            touch-action: manipulation;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--navy-blue);
+            padding: 20px 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--lime-green);
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: nowrap;
+        }
+
+        .navbar a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 6px;
+        }
+
+        .navbar a:hover,
+        .navbar a.active {
+            color: var(--chartreuse);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-apply-btn {
+            background: var(--chartreuse) !important;
+            color: var(--navy-blue) !important;
+            border-radius: 6px;
+            font-weight: 700 !important;
+            font-size: 0.9rem !important;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+            padding: 10px 20px !important;
+            transition: all 0.3s ease;
+        }
+
+        .nav-apply-btn:hover {
+            background: var(--lime-green) !important;
+            color: var(--white) !important;
+            transform: translateY(-2px);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: var(--chartreuse);
+            margin: 4px 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Hero */
+        .winners-hero {
+            margin-top: 70px;
+            background: linear-gradient(135deg, var(--navy-blue) 0%, var(--dark-navy) 50%, var(--navy-blue) 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 15s ease infinite;
+            color: var(--white);
+            padding: 80px 40px 70px;
+            text-align: center;
+            position: relative;
+        }
+
+        .winners-hero::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--lime-green), var(--chartreuse), var(--primary-orange), var(--chartreuse), var(--lime-green));
+            background-size: 200% 100%;
+            animation: gradientShift 8s ease infinite;
+        }
+
+        .hero-brandmark {
+            height: 70px;
+            width: auto;
+            margin-bottom: 20px;
+            filter: brightness(0) invert(1);
+        }
+
+        .winners-hero h1 {
+            font-family: 'Space Grotesk', 'Montserrat', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 18px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .winners-hero p {
+            max-width: 720px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .event-jump {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 32px;
+        }
+
+        .event-jump a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 8px 18px;
+            border: 2px solid rgba(196, 217, 60, 0.6);
+            border-radius: 999px;
+            transition: all 0.3s ease;
+        }
+
+        .event-jump a:hover {
+            background: var(--chartreuse);
+            color: var(--navy-blue);
+        }
+
+        /* Event sections */
+        .event-section {
+            padding: 70px 40px;
+        }
+
+        .event-section:nth-of-type(even) {
+            background: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .event-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-bottom: 36px;
+        }
+
+        .event-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--primary-orange);
+            margin-bottom: 6px;
+        }
+
+        .event-header h2 {
+            font-family: 'Space Grotesk', 'Montserrat', sans-serif;
+            font-size: 2.3rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            line-height: 1.15;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .event-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--lime-green), var(--chartreuse));
+            border-radius: 2px;
+        }
+
+        .event-meta {
+            margin-top: 14px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            opacity: 0.8;
+        }
+
+        .event-source {
+            color: var(--navy-blue);
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            border-bottom: 2px solid var(--chartreuse);
+            padding-bottom: 2px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .event-source:hover {
+            color: var(--primary-orange);
+            border-bottom-color: var(--primary-orange);
+        }
+
+        .winners-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .winner-card {
+            background: var(--white);
+            border-radius: 16px;
+            border-top: 5px solid var(--navy-blue);
+            box-shadow: 0 8px 30px var(--shadow-soft);
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .event-section:nth-of-type(even) .winner-card {
+            background: var(--cream);
+        }
+
+        .winner-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 40px var(--shadow-medium);
+        }
+
+        .winner-card.first {
+            border-top-color: var(--primary-orange);
+        }
+
+        .winner-card.second {
+            border-top-color: var(--lime-green);
+        }
+
+        .winner-card.third {
+            border-top-color: var(--teal);
+        }
+
+        .place {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .place-badge {
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 5px 12px;
+            border-radius: 999px;
+            color: var(--white);
+            background: var(--navy-blue);
+        }
+
+        .first .place-badge {
+            background: var(--primary-orange);
+        }
+
+        .second .place-badge {
+            background: var(--lime-green);
+        }
+
+        .third .place-badge {
+            background: var(--teal);
+        }
+
+        .place-prize {
+            font-family: 'Space Grotesk', 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            opacity: 0.75;
+        }
+
+        .winner-card h3 {
+            font-family: 'Space Grotesk', 'Montserrat', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 6px;
+        }
+
+        .captain {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .captain-role {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-bottom: 14px;
+        }
+
+        .winner-card p.description {
+            font-size: 0.95rem;
+            line-height: 1.65;
+            opacity: 0.9;
+            flex: 1;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            align-self: flex-start;
+            margin-top: 20px;
+            background: var(--navy-blue);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 10px 18px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            background: var(--chartreuse);
+            color: var(--navy-blue);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--navy-blue);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-logo {
+            height: 40px;
+            width: auto;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-logo:hover {
+            opacity: 1;
+        }
+
+        .footer p {
+            color: var(--white);
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin: 0;
+            padding: 0 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1000px) {
+            .hamburger {
+                display: flex;
+                left: 20px;
+                right: auto;
+            }
+
+            .navbar-content {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background: var(--navy-blue);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 80px;
+                gap: 20px;
+                transition: left 0.3s ease;
+                z-index: 999;
+                overflow-y: auto;
+            }
+
+            .navbar-content.active {
+                left: 0;
+            }
+
+            .navbar-content a:not(.nav-apply-btn) {
+                font-size: 1.1rem;
+                padding: 16px 30px;
+                width: 85%;
+                text-align: center;
+                border: 2px solid rgba(255, 255, 255, 0.2);
+                border-radius: 8px;
+            }
+
+            .navbar-content a:not(.nav-apply-btn):hover,
+            .navbar-content a:not(.nav-apply-btn):active {
+                background: rgba(255, 255, 255, 0.1);
+                border-color: var(--chartreuse);
+            }
+
+            .nav-apply-btn {
+                position: fixed !important;
+                right: 20px;
+                top: 35px;
+                left: auto;
+                transform: translateY(-50%);
+                margin-top: 0;
+            }
+
+            .winners-grid {
+                grid-template-columns: 1fr;
+                max-width: 680px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .winners-hero {
+                padding: 60px 20px 50px;
+            }
+
+            .winners-hero h1 {
+                font-size: 2.3rem;
+            }
+
+            .winners-hero p {
+                font-size: 1rem;
+            }
+
+            .event-section {
+                padding: 50px 20px;
+            }
+
+            .event-header h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hamburger {
+                left: 16px;
+            }
+
+            .hamburger span {
+                width: 24px;
+                height: 2.5px;
+                margin: 3px 0;
+            }
+
+            .navbar {
+                padding: 15px 0;
+                min-height: 60px;
+            }
+
+            .navbar-content {
+                padding-top: 70px;
+                gap: 15px;
+            }
+
+            .navbar-content a:not(.nav-apply-btn) {
+                font-size: 1rem;
+                padding: 14px 24px;
+                width: 90%;
+            }
+
+            .nav-apply-btn {
+                right: 16px !important;
+                top: 30px !important;
+                transform: translateY(-50%) !important;
+                font-size: 0.8rem !important;
+                padding: 8px 14px !important;
+            }
+
+            .winners-hero {
+                margin-top: 60px;
+            }
+
+            .hero-brandmark {
+                height: 56px;
+            }
+
+            .winners-hero h1 {
+                font-size: 2rem;
+            }
+
+            .event-section {
+                padding: 40px 16px;
+            }
+
+            .event-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .winner-card {
+                padding: 22px 18px;
+            }
+
+            .winner-card h3 {
+                font-size: 1.4rem;
+            }
+
+            .footer {
+                padding: 30px 0;
+            }
+
+            .footer-logo {
+                height: 35px;
+            }
+
+            .footer p {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="navbar-content" id="navbarContent">
+            <a href="index.html#top">Home</a>
+            <a href="index.html#info">Build the Future</a>
+            <a href="index.html#press">In the Press</a>
+            <a href="winners.html" class="active">Past Winners</a>
+            <a href="apply.html" class="nav-apply-btn">Apply Here</a>
+        </div>
+    </nav>
+
+    <header class="winners-hero">
+        <img src="H4F Brandmark.png" alt="AI Hack for Freedom" class="hero-brandmark">
+        <h1>PAST WINNERS</h1>
+        <p>At every AI Hack for Freedom, activist team captains and open-source developers build tools for movements living under repression. Here are the top three teams from each event.</p>
+        <div class="event-jump">
+            <a href="#h4f3">H4F III &middot; Washington, DC</a>
+            <a href="#h4f2">H4F II &middot; Nashville, TN</a>
+            <a href="#h4f1">H4F I &middot; Austin, TX</a>
+        </div>
+    </header>
+
+    <section class="event-section" id="h4f3">
+        <div class="container">
+            <div class="event-header">
+                <div>
+                    <span class="event-label">AI Hack for Freedom III</span>
+                    <h2>Washington, DC</h2>
+                    <div class="event-meta">September 2026 &middot; 10 teams &middot; $50,000 prize pool</div>
+                </div>
+                <a href="https://hrf.org/latest/announcing-the-winners-of-ai-hack-for-freedom-iii/" target="_blank" rel="noopener noreferrer" class="event-source">Read the HRF announcement &rarr;</a>
+            </div>
+            <div class="winners-grid">
+                <article class="winner-card first">
+                    <div class="place"><span class="place-badge">1st Place</span><span class="place-prize">$20,000</span></div>
+                    <h3>Behind the Jersey</h3>
+                    <div class="captain">Team Captain: Carine Kanimba</div>
+                    <div class="captain-role">Secretary General, World Liberty Congress</div>
+                    <p class="description">A platform that exposes "sportswashing." Fans can look up their favorite teams, see whether sponsors are tied to repressive regimes, and get the information they need to contact clubs and organize campaigns. AI gathers the data, and every entry is fact-checked by a person before publishing.</p>
+                    <a href="https://behind-the-jersey.org/" target="_blank" rel="noopener noreferrer" class="project-link">Explore Behind the Jersey &rarr;</a>
+                </article>
+                <article class="winner-card second">
+                    <div class="place"><span class="place-badge">2nd Place</span><span class="place-prize">$10,000</span></div>
+                    <h3>Ustad</h3>
+                    <div class="captain">Team Captain: Kadir Yağız Çetin</div>
+                    <div class="captain-role">Founder and CEO, CDR</div>
+                    <p class="description">An offline learning platform for Afghan girls barred from school. It holds Afghanistan's grade 1&ndash;12 curriculum in Dari, English, and Pashto, with an AI teacher that explains lessons by text or voice. Local AI models mean no internet is needed, data stays private, and lessons can be shared by memory card.</p>
+                    <a href="https://ustadschool.com/" target="_blank" rel="noopener noreferrer" class="project-link">Explore Ustad &rarr;</a>
+                </article>
+                <article class="winner-card third">
+                    <div class="place"><span class="place-badge">3rd Place</span><span class="place-prize">$6,000</span></div>
+                    <h3>Nima</h3>
+                    <div class="captain">Team Captain: Chemi Lhamo</div>
+                    <div class="captain-role">Tibetan-Canadian Activist; Spokesperson, World Liberty Congress</div>
+                    <p class="description">A streaming app that preserves evidence of attacks on protesters and activists. Footage is sent to a remote server as it's recorded, or to nearby friends' devices when there's no internet, so it survives even if the phone is confiscated. A dashboard helps surface recurring faces to identify potential threats.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="event-section" id="h4f2">
+        <div class="container">
+            <div class="event-header">
+                <div>
+                    <span class="event-label">AI Hack for Freedom II</span>
+                    <h2>Nashville, TN</h2>
+                    <div class="event-meta">May 2026 &middot; 8 teams &middot; Prizes paid in Bitcoin</div>
+                </div>
+                <a href="https://hrf.org/latest/announcing-the-winners-of-ai-hack-for-freedom-ii/" target="_blank" rel="noopener noreferrer" class="event-source">Read the HRF announcement &rarr;</a>
+            </div>
+            <div class="winners-grid">
+                <article class="winner-card first">
+                    <div class="place"><span class="place-badge">1st Place</span><span class="place-prize">$25,000</span></div>
+                    <h3>Tarkus</h3>
+                    <div class="captain">Team Captain: Jhanisse Vaca-Daza</div>
+                    <div class="captain-role">Bolivian pro-democracy activist; Co-founder, Ríos de Pie</div>
+                    <p class="description">An open-source, self-hostable AI platform for trainers running strategic nonviolence workshops. It generates culturally relevant lessons and case studies, gives students a live interface for questions, and analyzes engagement to give trainers real-time feedback.</p>
+                    <a href="https://tarkus-phi.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">Explore Tarkus &rarr;</a>
+                </article>
+                <article class="winner-card second">
+                    <div class="place"><span class="place-badge">2nd Place</span><span class="place-prize">$15,000</span></div>
+                    <h3>Zuka</h3>
+                    <div class="captain">Team Captain: Anaïse Kanimba</div>
+                    <div class="captain-role">Rwandan human rights activist; Director, Africa Bitcoin Institute</div>
+                    <p class="description">An open-source app that lets dissidents and journalists publish without revealing their identities, using an AI-generated avatar with its own face, voice, and biography. Built on Nostr so content can't be taken down, with a Bitcoin wallet attached to each avatar for uncensorable donations.</p>
+                    <a href="https://zuka.live/" target="_blank" rel="noopener noreferrer" class="project-link">Explore Zuka &rarr;</a>
+                </article>
+                <article class="winner-card third">
+                    <div class="place"><span class="place-badge">3rd Place</span><span class="place-prize">$5,000</span></div>
+                    <h3>Roshan</h3>
+                    <div class="captain">Team Captain: Roya Mahboob</div>
+                    <div class="captain-role">Afghan tech entrepreneur; President and Co-Founder, Digital Citizen Fund</div>
+                    <p class="description">A personalized AI learning companion for girls denied schooling by authoritarian regimes, covering English exam prep, job skills, and STEM. Lessons adapt to each student's pace and are preloaded so the app works offline in low-connectivity areas.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="event-section" id="h4f1">
+        <div class="container">
+            <div class="event-header">
+                <div>
+                    <span class="event-label">AI Hack for Freedom I</span>
+                    <h2>Austin, TX</h2>
+                    <div class="event-meta">January 2026 &middot; 8 teams &middot; Prizes paid in Bitcoin</div>
+                </div>
+                <a href="https://hrf.org/latest/announcing-the-ai-hack-for-freedom-hackathon-winners/" target="_blank" rel="noopener noreferrer" class="event-source">Read the HRF announcement &rarr;</a>
+            </div>
+            <div class="winners-grid">
+                <article class="winner-card first">
+                    <div class="place"><span class="place-badge">1st Place</span><span class="place-prize">0.5 BTC</span></div>
+                    <h3>Stringer Safety</h3>
+                    <div class="captain">Team Captain: Anjan Sundaram</div>
+                    <div class="captain-role">Journalist</div>
+                    <p class="description">An app that helps protect journalists in high-risk environments. Users securely share their location and status updates with a trusted network, and a one-click SOS alert shares safety context and triggers response recommendations from the encrypted AI tool Maple.</p>
+                    <a href="https://stringersafety.com" target="_blank" rel="noopener noreferrer" class="project-link">Explore Stringer Safety &rarr;</a>
+                </article>
+                <article class="winner-card second">
+                    <div class="place"><span class="place-badge">2nd Place</span><span class="place-prize">0.25 BTC</span></div>
+                    <h3>Pathos</h3>
+                    <div class="captain">Team Captain: Leopoldo López</div>
+                    <div class="captain-role">Venezuelan democratic opposition leader</div>
+                    <p class="description">A Nostr app that governments can't shut down, where activists join country-specific communities to report events on the ground, share them globally, and earn bitcoin for their contributions. It includes a self-custodial wallet, Bitchat for offline messaging, and a private AI assistant.</p>
+                    <a href="https://pathos.place/" target="_blank" rel="noopener noreferrer" class="project-link">Explore Pathos &rarr;</a>
+                </article>
+                <article class="winner-card third">
+                    <div class="place"><span class="place-badge">3rd Place</span><span class="place-prize">0.1 BTC</span></div>
+                    <h3>Corruption Disrespector</h3>
+                    <div class="captain">Team Captain: Anna Chekhovich</div>
+                    <div class="captain-role">Financial Director, Anti-Corruption Foundation</div>
+                    <p class="description">An AI investigation tool that extracts people, companies, addresses, and accounts from corporate registries, financial records, and court filings in multiple languages, then surfaces hidden connections between them as clear network maps.</p>
+                    <a href="https://www.corruptiondisrespector.com" target="_blank" rel="noopener noreferrer" class="project-link">Explore Corruption Disrespector &rarr;</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Hamburger menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const navbarContent = document.getElementById('navbarContent');
+            const navbar = document.querySelector('.navbar');
+
+            if (hamburger && navbarContent) {
+                hamburger.addEventListener('click', function() {
+                    hamburger.classList.toggle('active');
+                    navbarContent.classList.toggle('active');
+                });
+
+                // Close menu when clicking on a link
+                navbarContent.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        hamburger.classList.remove('active');
+                        navbarContent.classList.remove('active');
+                    });
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!navbar.contains(e.target) && navbarContent.classList.contains('active')) {
+                        hamburger.classList.remove('active');
+                        navbarContent.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
+
+    <footer class="footer">
+        <div class="container">
+            <div style="margin-bottom: 20px;">
+                <a href="https://aifreedomlab.org" target="_blank" rel="noopener noreferrer" style="display: inline-block;">
+                    <img src="ai-freedom-lab-2.png" alt="AI Freedom Lab" class="footer-logo">
+                </a>
+            </div>
+            <p>AI Hack for Freedom is presented by the AI Freedom Lab.</p>
+        </div>
+    </footer>
+</body>
+</html>
